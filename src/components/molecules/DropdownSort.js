@@ -2,7 +2,7 @@ import React, { memo, useState, useCallback } from "react";
 import { Icon } from "components/atoms";
 import DataSort from "data/sort";
 
-const DropdownSort = ({ value, onSelect = () => {} }) => {
+const DropdownSort = ({ value, onSelect = () => {}, dataCyButton }) => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
 
   const handleShowDropdown = useCallback(() => {
@@ -18,8 +18,9 @@ const DropdownSort = ({ value, onSelect = () => {} }) => {
   );
 
   return (
-    <div data-cy="dropdown-sort" className="relative">
+    <div className="relative">
       <button
+        data-cy={dataCyButton}
         className="mr-[15px] lg:mr-[30px] w-[45px] h-[45px] lg:w-[54px] lg:h-[54px] border rounded-full flex items-center justify-center"
         onClick={handleShowDropdown}
       >
@@ -34,30 +35,38 @@ const DropdownSort = ({ value, onSelect = () => {} }) => {
           {DataSort.map((d, i) => {
             return (
               <li
+                data-cy="sort-selection"
                 key={i}
-                className={`flex justify-between items-center py-[10px] px-[14px] lg:py-[14px] lg:px-[22px] cursor-pointer ${
+                className={`py-[10px] px-[14px] lg:py-[14px] lg:px-[22px] cursor-pointer ${
                   DataSort.length - 1 === i ? "" : "border-b border-[#E5E5E5]"
                 }`}
                 onClick={() => handleSelect(d)}
               >
-                <div className="flex items-center">
-                  <div className="mr-[13px] lg:mr-[19px]">
-                    <Icon name={d.iconName} />
+                <div
+                  className="flex justify-between items-center"
+                  data-cy={
+                    value === d.value ? "sort-selection-selected" : "false"
+                  }
+                >
+                  <div className="flex items-center">
+                    <div className="mr-[13px] lg:mr-[19px]">
+                      <Icon name={d.iconName} />
+                    </div>
+
+                    <p className="text-[#4A4A4A] text-[11px] lg:text-[16px] font-regular">
+                      {d.label}
+                    </p>
                   </div>
 
-                  <p className="text-[#4A4A4A] text-[11px] lg:text-[16px] font-regular">
-                    {d.label}
-                  </p>
+                  {value === d.value ? (
+                    <div>
+                      <Icon
+                        name={"check-grey"}
+                        className="w-[12px] h-[12px] lg:w-full lg:h-full"
+                      />
+                    </div>
+                  ) : null}
                 </div>
-
-                {value === d.value ? (
-                  <div>
-                    <Icon
-                      name={"check-grey"}
-                      className="w-[12px] h-[12px] lg:w-full lg:h-full"
-                    />
-                  </div>
-                ) : null}
               </li>
             );
           })}

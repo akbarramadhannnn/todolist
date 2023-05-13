@@ -17,7 +17,10 @@ const TopContentArea = ({
   isShowSortButton = false,
   valueSort = "",
   onClickSortButton = () => {},
-  dataCyTitle
+  dataCyTitle,
+  dataCyBackButton,
+  dataCyEditButton,
+  dataCyButtonSort
 }) => {
   const inputRef = useRef(null);
 
@@ -46,6 +49,7 @@ const TopContentArea = ({
       <div className="flex items-center">
         {isShowBackButton ? (
           <button
+            data-cy={dataCyBackButton}
             className="hidden lg:block mr-[30px]"
             onClick={onClickBackButton}
           >
@@ -71,7 +75,11 @@ const TopContentArea = ({
           )}
 
           {title && isShowEditButton ? (
-            <button className="ml-[30px]" onClick={onClickEditButton}>
+            <button
+              data-cy={dataCyEditButton}
+              className="ml-[30px]"
+              onClick={onClickEditButton}
+            >
               <Icon name="pencil-grey" />
             </button>
           ) : null}
@@ -81,12 +89,17 @@ const TopContentArea = ({
       <div className="flex items-center justify-end">
         {isShowSortButton ? (
           <DropdownSort
+            dataCyButton={dataCyButtonSort}
             value={valueSort}
             onSelect={(value) => onClickSortButton(value)}
           />
         ) : null}
 
-        <Button dataCy={dataCyButtonRight} iconName={iconNameButtonRight} onClick={onClickButtonRight}>
+        <Button
+          dataCy={dataCyButtonRight}
+          iconName={iconNameButtonRight}
+          onClick={onClickButtonRight}
+        >
           {labelButtonRight}
         </Button>
       </div>

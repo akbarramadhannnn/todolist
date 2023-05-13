@@ -118,7 +118,7 @@ const Dashboard = () => {
       {isLoading ? <LoadingSpinner /> : null}
 
       {!isLoading && !listActivity.data.length > 0 ? (
-        <EmptyState type={1} />
+        <EmptyState type={1} dataCy="activity-empty-state" />
       ) : null}
 
       {!isLoading && listActivity.data.length > 0 ? (

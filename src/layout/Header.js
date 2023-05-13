@@ -11,7 +11,10 @@ const Header = () => {
   }, [navigate]);
 
   return (
-    <header className="bg-[#16ABF8] w-full h-[64px] px-[20px] lg:h-[105px] lg:px-[202px] flex items-center">
+    <header
+      data-cy="header-background"
+      className="bg-[#16ABF8] w-full h-[64px] px-[20px] lg:h-[105px] lg:px-[202px] flex items-center"
+    >
       {location.pathname !== "/" ? (
         <button className="block lg:hidden mr-[22px]" onClick={handleBackBtn}>
           <Icon name="chevron-left-white" />
@@ -20,9 +23,9 @@ const Header = () => {
 
       <h1
         data-cy="header-title"
-        className="text-white font-bold text-[18px] lg:text-[24px] uppercase"
+        className="text-white font-bold text-[18px] lg:text-[24px]"
       >
-        To Do List App
+        TO DO LIST APP
       </h1>
     </header>
   );

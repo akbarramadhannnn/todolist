@@ -307,10 +307,17 @@ const ListItem = () => {
           isShowSortButton
           valueSort={valueSort}
           onClickSortButton={(value) => handleSortData(value)}
+          dataCyTitle="todo-title"
+          dataCyBackButton="todo-back-button"
+          dataCyEditButton="todo-title-edit-button"
+          dataCyButtonRight="todo-add-button"
+          dataCyButtonSort="todo-sort-button"
         />
       ) : null}
 
-      {!isLoading && !todoItems.length > 0 ? <EmptyState type={2} /> : null}
+      {!isLoading && !todoItems.length > 0 ? (
+        <EmptyState type={2} dataCy="todo-empty-state" />
+      ) : null}
 
       {!isLoading && todoItems.length > 0 ? (
         <CardTodoList
