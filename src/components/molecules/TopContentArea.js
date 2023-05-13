@@ -86,13 +86,12 @@ const TopContentArea = ({
       </div>
 
       <div className="flex items-center justify-end">
-        {isShowSortButton ? (
-          <DropdownSort
-            dataCyButton={dataCyButtonSort}
-            value={valueSort}
-            onSelect={(value) => onClickSortButton(value)}
-          />
-        ) : null}
+        <DropdownSort
+          isShow={isShowSortButton}
+          dataCyButton={dataCyButtonSort}
+          value={valueSort}
+          onSelect={(value) => onClickSortButton(value)}
+        />
 
         <Button
           dataCy={dataCyButtonRight}

@@ -57,8 +57,11 @@ const ListItem = () => {
 
   useEffect(() => {
     ApiGetActivityGroupById(params.id).then((response) => {
-      setTitle(response.title);
-      setTodoItems(response.todo_items);
+      if (!response.response?.status) {
+        setTitle(response.title);
+        setTodoItems(response.todo_items);
+      }
+
       setIsLoading(false);
     });
   }, [params.id]);
@@ -353,6 +356,10 @@ const ListItem = () => {
         desc={modalAlert.desc}
         onClose={handleCloseModalAlert}
       />
+
+      <div data-cy="modal-add"></div>
+      <div data-cy="modal-information"></div>
+      <div data-cy="modal-delete"></div>
     </div>
   );
 };
