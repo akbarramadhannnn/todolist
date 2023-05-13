@@ -9,11 +9,12 @@ const CardTodoList = ({
   onClickCheckList,
 }) => {
   return (
-    <ul data-cy="card-list-todo">
+    <ul>
       {data.map((d, i) => {
         const dataPriority = DataPriority.find((f) => f.value === d.priority);
         return (
           <li
+            data-cy="todo-item"
             key={i}
             className={`bg-[#fff] rounded-[12px] p-[26px] flex justify-between items-center ${
               data.length - 1 === i ? "mb-0" : "mb-[10px]"
@@ -31,6 +32,7 @@ const CardTodoList = ({
               </div>
 
               <div
+                data-cy="todo-item-priority-indicator"
                 className="w-[5px] h-[5px] lg:w-[9px] lg:h-[9px] mr-[14px] lg:mr-[16px] rounded-full"
                 style={{
                   backgroundColor: dataPriority.color,
@@ -38,6 +40,7 @@ const CardTodoList = ({
               />
 
               <p
+                data-cy="todo-item-title"
                 className={`${
                   d.is_active === 1
                     ? "text-[#111111] no-underline"
@@ -47,7 +50,7 @@ const CardTodoList = ({
                 {d.title}
               </p>
 
-              <button className="ml-[19px]" onClick={() => onClickEdit(d)}>
+              <button data-cy="todo-item-edit-button" className="ml-[19px]" onClick={() => onClickEdit(d)}>
                 <Icon
                   name="pencil-grey"
                   className="w-[10px] h-[10px] lg:w-full lg:h-full"
@@ -55,7 +58,7 @@ const CardTodoList = ({
               </button>
             </div>
 
-            <button onClick={() => onClickDelete(d)}>
+            <button data-cy="todo-item-delete-button" onClick={() => onClickDelete(d)}>
               <Icon
                 name="trash-grey"
                 className="w-[14px] h-[14px] lg:w-full lg:h-full"

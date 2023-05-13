@@ -4,7 +4,7 @@ import { Icon } from "components/atoms";
 const Checkbox = ({ active, onClick }) => {
   return (
     <button
-      data-cy="checkbox"
+      data-cy="todo-item-checkbox"
       className={`w-[12px] h-[12px] lg:w-[20px] lg:h-[20px] flex items-center justify-center  ${
         active ? "bg-[#FFFFFF] border border-[#C7C7C7]" : "bg-[#16ABF8]"
       }`}

@@ -18,7 +18,7 @@ import SortAzIcon from "assets/svg/sort-az.svg";
 import SortZaIcon from "assets/svg/sort-za.svg";
 import SortUnfinishedIcon from "assets/svg/sort-unfinished.svg";
 
-const Icon = ({ name, className = "w-full h-full" }) => {
+const Icon = ({ name, className = "w-full h-full", dataCy }) => {
   const generateIcon = useMemo(() => {
     let icon;
     if (name === "chevron-left-black") {
@@ -62,7 +62,7 @@ const Icon = ({ name, className = "w-full h-full" }) => {
     return icon;
   }, [name]);
 
-  return <img data-cy="icon" src={generateIcon} alt={name} className={className} />;
+  return <img data-cy={dataCy} src={generateIcon} alt={name} className={className} />;
 };
 
 export default memo(Icon);

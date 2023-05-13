@@ -4,7 +4,6 @@ import { Icon } from "components/atoms";
 const ModalAlert = ({ open, desc, onClose }) => {
   return (
     <div
-      data-cy="modal-information-icon"
       className={`fixed w-full top-0 left-0 px-[20px] lg:h-[105px] lg:px-[202px] flex justify-center items-center mt-[20px] lg:mt-0
     ${open ? "block" : "hidden"}
     `}
@@ -23,9 +22,9 @@ const ModalAlert = ({ open, desc, onClose }) => {
         </button>
 
         <div className="mr-[13px]">
-          <Icon name="information-green" />
+          <Icon name="information-green" dataCy="modal-information-icon" />
         </div>
-        <p className="text-[14px] text-[#111111] font-medium">{desc}</p>
+        <p data-cy="modal-information-title" className="text-[14px] text-[#111111] font-medium">{desc}</p>
       </div>
     </div>
   );

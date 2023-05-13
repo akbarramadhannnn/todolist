@@ -20,7 +20,7 @@ const TopContentArea = ({
   dataCyTitle,
   dataCyBackButton,
   dataCyEditButton,
-  dataCyButtonSort
+  dataCyButtonSort,
 }) => {
   const inputRef = useRef(null);
 
@@ -37,7 +37,6 @@ const TopContentArea = ({
 
   return (
     <div
-      data-cy="top-content-area"
       className={`mb-[37px] lg:mb-[55px]
     ${
       isShowEditButton
