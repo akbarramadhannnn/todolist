@@ -143,6 +143,9 @@ const Dashboard = () => {
         desc={modalAlert.desc}
         onClose={handleCloseModalAlert}
       />
+
+      <div data-cy="modal-information"></div>
+      <div data-cy="modal-delete"></div>
     </div>
   );
 };
