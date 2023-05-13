@@ -32,7 +32,9 @@ const ModalForm = ({
       >
         <div>
           <Icon name="danger-red" dataCy="modal-delete-icon" />
-          <h4 className="font-bold" data-cy="modal-delete-title"></h4>
+          <h4 className="font-bold" data-cy="modal-delete-title">
+            {""}
+          </h4>
         </div>
 
         <div>
