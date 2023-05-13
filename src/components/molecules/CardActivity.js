@@ -8,13 +8,11 @@ const CardActivity = ({
   onClickDelete = () => {},
 }) => {
   return (
-    <ul
-      data-cy="activity-item"
-      className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-    >
+    <ul className="grid grid-cols-2 lg:grid-cols-4 gap-8">
       {data.map((d, i) => {
         return (
           <li
+            data-cy="activity-item"
             key={i}
             className="h-[150px] lg:h-[234px] py-[13px] px-[17px] lg:py-[22px] lg:px-[27px] rounded-[12px] flex flex-col justify-between"
             style={{
@@ -25,7 +23,10 @@ const CardActivity = ({
               className="h-full cursor-pointer"
               onClick={() => onClickCard(d)}
             >
-              <h2 data-cy="activity-item-title" className="font-bold text-[#111111] text-[14px] lg:text-[18px]">
+              <h2
+                data-cy="activity-item-title"
+                className="font-bold text-[#111111] text-[14px] lg:text-[18px]"
+              >
                 {d.title}
               </h2>
             </div>
