@@ -19,7 +19,6 @@ const ModalForm = ({
 
   return (
     <div
-      data-cy="todo-modal-delete"
       className={`fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full flex justify-center items-center ${
         open ? "block" : "hidden"
       }`}
@@ -27,7 +26,10 @@ const ModalForm = ({
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
-      <div className="relative bg-white rounded-[12px] shadow w-[490px] h-[355px] flex flex-col justify-between items-center pt-[50px] pb-[43px] px-[20px] lg:px-[58px]">
+      <div
+        data-cy="todo-modal-delete"
+        className="relative bg-white rounded-[12px] shadow w-[490px] h-[355px] flex flex-col justify-between items-center pt-[50px] pb-[43px] px-[20px] lg:px-[58px]"
+      >
         <div>
           <Icon name="danger-red" dataCy="modal-delete-icon" />
           <h4 className="font-bold" data-cy="modal-delete-title"></h4>
@@ -37,7 +39,10 @@ const ModalForm = ({
           <p className="text-center text-[#111111] font-medium text-[14px] lg:text-[18px]">
             {desc}
           </p>
-          <p data-cy="" className="font-bold text-center text-[#111111] text-[14px] lg:text-[18px]">
+          <p
+            data-cy=""
+            className="font-bold text-center text-[#111111] text-[14px] lg:text-[18px]"
+          >
             “{title}”?
           </p>
         </div>
