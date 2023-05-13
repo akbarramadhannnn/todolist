@@ -8,7 +8,10 @@ const CardActivity = ({
   onClickDelete = () => {},
 }) => {
   return (
-    <ul data-cy="card-activity" className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <ul
+      data-cy="activity-item"
+      className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+    >
       {data.map((d, i) => {
         return (
           <li
@@ -22,18 +25,24 @@ const CardActivity = ({
               className="h-full cursor-pointer"
               onClick={() => onClickCard(d)}
             >
-              <h2 className="font-bold text-[#111111] text-[14px] lg:text-[18px]">
+              <h2 data-cy="activity-item-title" className="font-bold text-[#111111] text-[14px] lg:text-[18px]">
                 {d.title}
               </h2>
             </div>
 
             <div className="flex justify-between items-center">
-              <p className="font-regular text-[#888888] text-[10px] lg:text-[14px]">
+              <p
+                data-cy="activity-item-date"
+                className="font-regular text-[#888888] text-[10px] lg:text-[14px]"
+              >
                 {moment(d.created_at).format("D MMMM YYYY")}
               </p>
 
               <div className="relative">
-                <button onClick={() => onClickDelete(d)}>
+                <button
+                  data-cy="activity-item-delete-button"
+                  onClick={() => onClickDelete(d)}
+                >
                   <Icon
                     name="trash-grey"
                     className="w-[8px] h-[9px] lg:w-full lg:h-full"

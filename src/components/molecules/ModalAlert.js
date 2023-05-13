@@ -4,7 +4,7 @@ import { Icon } from "components/atoms";
 const ModalAlert = ({ open, desc, onClose }) => {
   return (
     <div
-      data-cy="modal-alert"
+      data-cy="modal-information-icon"
       className={`fixed w-full top-0 left-0 px-[20px] lg:h-[105px] lg:px-[202px] flex justify-center items-center mt-[20px] lg:mt-0
     ${open ? "block" : "hidden"}
     `}

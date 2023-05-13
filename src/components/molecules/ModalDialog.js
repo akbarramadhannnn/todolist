@@ -46,6 +46,7 @@ const ModalForm = ({
             onClick={onSubmitCancel}
             variant="default"
             disabled={disabledButton}
+            dataCy="modal-delete-cancel-button"
           >
             Batal
           </Button>
@@ -54,6 +55,7 @@ const ModalForm = ({
             onClick={onSubmitDelete}
             variant="danger"
             disabled={disabledButton}
+            dataCy="modal-delete-confirm-button"
           >
             Hapus
           </Button>

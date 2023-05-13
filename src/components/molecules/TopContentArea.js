@@ -7,6 +7,7 @@ const TopContentArea = ({
   labelButtonRight,
   iconNameButtonRight,
   onClickButtonRight = () => {},
+  dataCyButtonRight,
   isShowBackButton = false,
   onClickBackButton = () => {},
   isShowEditButton = false,
@@ -16,6 +17,7 @@ const TopContentArea = ({
   isShowSortButton = false,
   valueSort = "",
   onClickSortButton = () => {},
+  dataCyTitle
 }) => {
   const inputRef = useRef(null);
 
@@ -65,7 +67,7 @@ const TopContentArea = ({
               onBlur={onBlur}
             />
           ) : (
-            <Title>{title}</Title>
+            <Title dataCy={dataCyTitle}>{title}</Title>
           )}
 
           {title && isShowEditButton ? (
@@ -84,7 +86,7 @@ const TopContentArea = ({
           />
         ) : null}
 
-        <Button iconName={iconNameButtonRight} onClick={onClickButtonRight}>
+        <Button dataCy={dataCyButtonRight} iconName={iconNameButtonRight} onClick={onClickButtonRight}>
           {labelButtonRight}
         </Button>
       </div>

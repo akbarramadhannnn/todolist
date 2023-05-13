@@ -109,8 +109,10 @@ const Dashboard = () => {
       <TopContentArea
         title="Activity"
         labelButtonRight="Tambah"
+        dataCyButtonRight="activity-add-button"
         iconNameButtonRight="plus-white"
         onClickButtonRight={handleAddActivity}
+        dataCyTitle="activity-title"
       />
 
       {isLoading ? <LoadingSpinner /> : null}

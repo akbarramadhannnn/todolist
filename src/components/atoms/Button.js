@@ -7,6 +7,7 @@ const Button = ({
   disabled = false,
   onClick = () => {},
   iconName,
+  dataCy
 }) => {
   
   const generateStyles = useMemo(() => {
@@ -24,7 +25,7 @@ const Button = ({
 
   return (
     <button
-      data-cy="button"
+      data-cy={dataCy}
       disabled={disabled}
       onClick={onClick}
       className={`${generateStyles} disabled:opacity-[0.2] disabled:cursor-not-allowed py-[12px] px-[20px] lg:py-[13px] lg:px-[39px] rounded-full font-semibold text-[12px] lg:text-[18px] flex items-center`}
