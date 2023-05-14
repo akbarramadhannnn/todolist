@@ -34,7 +34,7 @@ const TopContentArea = ({
     inputRef.current.blur();
     setTimeout(() => {
       onClickEditButton();
-    }, 100)
+    }, 50);
   }, [onClickEditButton]);
 
   return (
@@ -72,7 +72,9 @@ const TopContentArea = ({
               onBlur={onBlur}
             />
           ) : (
-            <Title dataCy={dataCyTitle} onClick={onClickEditButton}>{title}</Title>
+            <Title dataCy={dataCyTitle} onClick={onClickEditButton}>
+              {title}
+            </Title>
           )}
 
           {title && isShowEditButton ? (
@@ -92,12 +94,13 @@ const TopContentArea = ({
       </div>
 
       <div className="flex items-center justify-end">
-        <DropdownSort
-          isShow={isShowSortButton}
-          dataCyButton={dataCyButtonSort}
-          value={valueSort}
-          onSelect={(value) => onClickSortButton(value)}
-        />
+        {isShowSortButton ? (
+          <DropdownSort
+            dataCyButton={dataCyButtonSort}
+            value={valueSort}
+            onSelect={(value) => onClickSortButton(value)}
+          />
+        ) : null}
 
         <Button
           dataCy={dataCyButtonRight}

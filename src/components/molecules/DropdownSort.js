@@ -2,7 +2,7 @@ import React, { memo, useState, useCallback } from "react";
 import { Icon } from "components/atoms";
 import DataSort from "data/sort";
 
-const DropdownSort = ({ value, onSelect = () => {}, dataCyButton, isShow }) => {
+const DropdownSort = ({ value, onSelect = () => {}, dataCyButton }) => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
 
   const handleShowDropdown = useCallback(() => {
@@ -18,7 +18,7 @@ const DropdownSort = ({ value, onSelect = () => {}, dataCyButton, isShow }) => {
   );
 
   return (
-    <div className={`relative ${isShow ? "block" : "hidden"}`}>
+    <div className={`relative`}>
       <button
         data-cy={dataCyButton}
         className="mr-[15px] lg:mr-[30px] w-[45px] h-[45px] lg:w-[54px] lg:h-[54px] border rounded-full flex items-center justify-center"

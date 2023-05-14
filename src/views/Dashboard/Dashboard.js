@@ -25,12 +25,18 @@ const Dashboard = () => {
     desc: "",
   });
 
-  useEffect(() => {
+  const handleGetAllACtivity = useCallback(() => {
     ApiGetActivityGroup().then((response) => {
       setListActivity(response);
       setIsLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (isLoading) {
+      handleGetAllACtivity();
+    }
+  }, [isLoading, handleGetAllACtivity]);
 
   const handleDetailCard = useCallback(
     (data) => {
@@ -52,10 +58,6 @@ const Dashboard = () => {
   const handleAddActivity = useCallback(() => {
     ApiCreateActivityGroup().then((response) => {
       setIsLoading(true);
-      ApiGetActivityGroup().then((response) => {
-        setListActivity(response);
-        setIsLoading(false);
-      });
     });
   }, []);
 
@@ -85,10 +87,7 @@ const Dashboard = () => {
     }));
     ApiDeleteActivityGroupById(activityId).then((response) => {
       setIsLoading(true);
-      ApiGetActivityGroup().then((response) => {
-        setListActivity(response);
-        setIsLoading(false);
-      });
+
       handleCloseModalDialog();
       setModalAlert((oldState) => ({
         ...oldState,
