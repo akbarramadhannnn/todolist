@@ -84,11 +84,13 @@ const Dashboard = () => {
       disabledButton: true,
     }));
     ApiDeleteActivityGroupById(activityId).then((response) => {
-      setIsLoading(true);
-      ApiGetActivityGroup().then((response) => {
-        setListActivity(response);
-        setIsLoading(false);
-      });
+      const state = [...listActivity.data];
+      const index = state.map((d) => d.id).indexOf(activityId);
+      state.splice(index, 1);
+      setListActivity((oldSatte) => ({
+        ...oldSatte,
+        data: state,
+      }));
       handleCloseModalDialog();
       setModalAlert((oldState) => ({
         ...oldState,
