@@ -26,6 +26,7 @@ const ModalForm = ({
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
+      onClick={onSubmitCancel}
     >
       <div
         data-cy="todo-modal-delete"
