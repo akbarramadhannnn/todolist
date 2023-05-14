@@ -134,20 +134,19 @@ const Dashboard = () => {
         </ul>
       ) : null}
 
-      <ModalDialog
-        open={modalDialog.isOpen}
-        desc={modalDialog.desc}
-        title={modalDialog.title}
-        onSubmitCancel={handleCloseModalDialog}
-        onSubmitDelete={handleSubmitDeleteActivity}
-        disabledButton={modalDialog.disabledButton}
-      />
+      {modalDialog.isOpen ? (
+        <ModalDialog
+          desc={modalDialog.desc}
+          title={modalDialog.title}
+          onSubmitCancel={handleCloseModalDialog}
+          onSubmitDelete={handleSubmitDeleteActivity}
+          disabledButton={modalDialog.disabledButton}
+        />
+      ) : null}
 
-      <ModalAlert
-        open={modalAlert.isOpen}
-        desc={modalAlert.desc}
-        onClose={handleCloseModalAlert}
-      />
+      {modalAlert.isOpen ? (
+        <ModalAlert desc={modalAlert.desc} onClose={handleCloseModalAlert} />
+      ) : null}
 
       <div data-cy="modal-delete"></div>
       <div data-cy="modal-information"></div>

@@ -1,13 +1,4 @@
 import { lazy } from 'react'
-// import TopContentArea from "./TopContentArea";
-// import CardActivity from "./CardActivity";
-// import ModalForm from "./ModalForm";
-// import ModalDialog from "./ModalDialog";
-// import DropdownPriority from "./DropdownPriority";
-// import CardTodoList from "./CardTodoList";
-// import ModalAlert from "./ModalAlert";
-// import DropdownSort from "./DropdownSort";
-
 const TopContentArea = lazy(() => import('./TopContentArea'));
 const CardActivity = lazy(() => import('./CardActivity'));
 const ModalForm = lazy(() => import('./ModalForm'));
