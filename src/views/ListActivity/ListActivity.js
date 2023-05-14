@@ -108,7 +108,7 @@ const ListItem = () => {
       },
       priority: {
         ...oldState.priority,
-        value: "",
+        value: "very-high",
       },
       disabled: true,
     }));
