@@ -148,7 +148,6 @@ const Dashboard = () => {
       />
 
       <div data-cy="modal-information"></div>
-      <div data-cy="modal-delete"></div>
     </div>
   );
 };
