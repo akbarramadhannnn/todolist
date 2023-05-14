@@ -25,6 +25,7 @@ const Select = ({ label, value, onSelect = () => {} }) => {
   return (
     <div data-cy="dropdownd-priority" className="relative">
       <button
+        data-cy="modal-add-priority-dropdown"
         className={`flex items-center justify-between w-full h-full h-3xl py-[14px] px-[17px] border border-[#E5E5E5] ${
           isShowDropdown
             ? "bg-[#F4F4F4] rounded-tl-[6px] rounded-tr-[6px]"

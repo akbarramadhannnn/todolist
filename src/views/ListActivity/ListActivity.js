@@ -298,7 +298,7 @@ const ListItem = () => {
           onClickButtonRight={handleAddTodoList}
           disabledEdit={isEdit}
           onChangeEdit={handleChangeEditTitle}
-          isShowSortButton
+          isShowSortButton={!todoItems.length > 0 ? false : true}
           valueSort={valueSort}
           onClickSortButton={(value) => handleSortData(value)}
           dataCyTitle="todo-title"

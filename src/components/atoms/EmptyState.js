@@ -17,7 +17,7 @@ const EmptyState = ({ type = 1, dataCy }) => {
   return (
     <div
       data-cy={dataCy}
-      className="flex justify-center items-center h-[400px] lg:h-full"
+      className="flex justify-center items-center h-[400px] lg:h-full md:mt-[200px]"
     >
       <img
         className="lg:w-[767px] lg:h-[490px]"
