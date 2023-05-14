@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { TopContentArea, ModalDialog, ModalAlert } from "components/molecules";
 import { EmptyState, LoadingSpinner } from "components/atoms";
@@ -99,55 +99,64 @@ const Dashboard = () => {
 
   return (
     <div className="pb-[60px]">
-      <TopContentArea
-        title="Activity"
-        labelButtonRight="Tambah"
-        dataCyButtonRight="activity-add-button"
-        iconNameButtonRight="plus-white"
-        onClickButtonRight={handleAddActivity}
-        dataCyTitle="activity-title"
-      />
+      <Suspense>
+        <TopContentArea
+          title="Activity"
+          labelButtonRight="Tambah"
+          dataCyButtonRight="activity-add-button"
+          iconNameButtonRight="plus-white"
+          onClickButtonRight={handleAddActivity}
+          dataCyTitle="activity-title"
+        />
+      </Suspense>
 
       {isLoading ? <LoadingSpinner /> : null}
 
       {!isLoading && !listActivity.data.length > 0 ? (
-        <EmptyState
-          type={1}
-          dataCy="activity-empty-state"
-          onClick={handleAddActivity}
-        />
+        <Suspense>
+          <EmptyState
+            type={1}
+            dataCy="activity-empty-state"
+            onClick={handleAddActivity}
+          />
+        </Suspense>
       ) : null}
 
       {!isLoading && listActivity.data.length > 0 ? (
         <ul className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {listActivity.data.map((d, i) => {
             return (
-              <CardActivity
-                key={i}
-                title={d.title}
-                createdAt={d.created_at}
-                onClickCard={() => handleDetailCard(d)}
-                onClickDelete={() => handleDeleteCard(d)}
-              />
+              <Suspense key={i}>
+                <CardActivity
+                  title={d.title}
+                  createdAt={d.created_at}
+                  onClickCard={() => handleDetailCard(d)}
+                  onClickDelete={() => handleDeleteCard(d)}
+                />
+              </Suspense>
             );
           })}
         </ul>
       ) : null}
 
-      <ModalDialog
-        open={modalDialog.isOpen}
-        desc={modalDialog.desc}
-        title={modalDialog.title}
-        onSubmitCancel={handleCloseModalDialog}
-        onSubmitDelete={handleSubmitDeleteActivity}
-        disabledButton={modalDialog.disabledButton}
-      />
+      <Suspense>
+        <ModalDialog
+          open={modalDialog.isOpen}
+          desc={modalDialog.desc}
+          title={modalDialog.title}
+          onSubmitCancel={handleCloseModalDialog}
+          onSubmitDelete={handleSubmitDeleteActivity}
+          disabledButton={modalDialog.disabledButton}
+        />
+      </Suspense>
 
-      <ModalAlert
-        open={modalAlert.isOpen}
-        desc={modalAlert.desc}
-        onClose={handleCloseModalAlert}
-      />
+      <Suspense>
+        <ModalAlert
+          open={modalAlert.isOpen}
+          desc={modalAlert.desc}
+          onClose={handleCloseModalAlert}
+        />
+      </Suspense>
 
       <div data-cy="modal-delete"></div>
       <div data-cy="modal-information"></div>
