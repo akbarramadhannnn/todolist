@@ -3,8 +3,8 @@ import Layout from "layout";
 import { Route, Routes } from "react-router-dom";
 import { LoadingSpinner } from "components/atoms";
 
-const Dashboard = lazy(() => import("views/Dashboard/Dashboard"));
-const ListActivity = lazy(() => import("views/ListActivity/ListActivity"));
+const Dashboard = lazy(() => import("views/Dashboard"));
+const ListActivity = lazy(() => import("views/ListActivity"));
 
 function App() {
   return (
