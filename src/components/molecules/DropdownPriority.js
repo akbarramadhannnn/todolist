@@ -2,6 +2,30 @@ import React, { memo, useState, useCallback, useMemo } from "react";
 import { Icon, Label } from "components/atoms";
 import DataPriority from "data/priority";
 
+const Lists = memo(({ onSelectList, color, label, value, valueList }) => {
+  return (
+    <li
+      className={`bg-[#fff] border-b-[1px] border-l-[1px] border-r-[1px] border-[#E5E5E5] py-[19px] px-[17px] flex items-center justify-between cursor-pointer`}
+      onClick={onSelectList}
+      data-cy="modal-add-priority-item"
+    >
+      <div className="flex items-center">
+        <div
+          className={`w-[14px] h-[14px] rounded-full mr-[9px]`}
+          style={{
+            backgroundColor: color,
+          }}
+        />
+        <Label>{label}</Label>
+      </div>
+
+      {value === valueList ? (
+        <Icon name="check-grey" className="w-[20px] h-[20px]" />
+      ) : null}
+    </li>
+  );
+});
+
 const Select = ({ label, value, onSelect = () => {} }) => {
   const [isShowDropdown, setIsShowDropdown] = useState(false);
 
@@ -34,7 +58,7 @@ const Select = ({ label, value, onSelect = () => {} }) => {
         onBlur={() => {
           setTimeout(() => {
             handleShowDropdown();
-          }, 100);
+          }, 80);
         }}
       >
         {values ? (
@@ -63,26 +87,14 @@ const Select = ({ label, value, onSelect = () => {} }) => {
         <ul className="w-full absolute left-0 h-[200px] overflow-y-auto rounded-bl-[6px] rounded-br-[6px]">
           {DataPriority.map((d, i) => {
             return (
-              <li
+              <Lists
                 key={i}
-                className={`bg-[#fff] border-b-[1px] border-l-[1px] border-r-[1px] border-[#E5E5E5] py-[19px] px-[17px] flex items-center justify-between cursor-pointer`}
-                onClick={() => handleSelectList(d)}
-                data-cy="modal-add-priority-item"
-              >
-                <div className="flex items-center">
-                  <div
-                    className={`w-[14px] h-[14px] rounded-full mr-[9px]`}
-                    style={{
-                      backgroundColor: d.color,
-                    }}
-                  />
-                  <Label>{d.label}</Label>
-                </div>
-
-                {value === d.value ? (
-                  <Icon name="check-grey" className="w-[20px] h-[20px]" />
-                ) : null}
-              </li>
+                onSelectList={() => handleSelectList(d)}
+                color={d.color}
+                label={d.label}
+                value={value}
+                valueList={d.value}
+              />
             );
           })}
         </ul>
