@@ -69,6 +69,7 @@ const Select = ({ label, value, onSelect = () => {} }) => {
                 key={i}
                 className={`bg-[#fff] border-b-[1px] border-l-[1px] border-r-[1px] border-[#E5E5E5] py-[19px] px-[17px] flex items-center justify-between cursor-pointer`}
                 onClick={() => handleSelectList(d)}
+                data-cy="modal-add-priority-item" 
               >
                 <div className="flex items-center">
                   <div
