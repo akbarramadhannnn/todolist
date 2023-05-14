@@ -9,12 +9,24 @@ const ListActivity = lazy(() => import("views/ListActivity"));
 function App() {
   return (
     <Layout>
-      <Suspense fallback={<LoadingSpinner />}>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/list-activity/:id" element={<ListActivity />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <Dashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/list-activity/:id"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <ListActivity />
+            </Suspense>
+          }
+        />
+      </Routes>
     </Layout>
   );
 }

@@ -1,5 +1,5 @@
 import React, { memo, useState, useCallback, useMemo } from "react";
-import { Icon } from "components/atoms";
+import { Icon, Label } from "components/atoms";
 import DataPriority from "data/priority";
 
 const Select = ({ label, value, onSelect = () => {} }) => {
@@ -47,12 +47,10 @@ const Select = ({ label, value, onSelect = () => {} }) => {
               }}
             />
 
-            <p className="text-[16px] text-[#111111] font-regular">
-              {values.label}
-            </p>
+            <Label>{values.label}</Label>
           </div>
         ) : (
-          <p className="text-[16px] text-[#111111] font-regular">{label}</p>
+          <Label>{label}</Label>
         )}
 
         <Icon
@@ -69,7 +67,7 @@ const Select = ({ label, value, onSelect = () => {} }) => {
                 key={i}
                 className={`bg-[#fff] border-b-[1px] border-l-[1px] border-r-[1px] border-[#E5E5E5] py-[19px] px-[17px] flex items-center justify-between cursor-pointer`}
                 onClick={() => handleSelectList(d)}
-                data-cy="modal-add-priority-item" 
+                data-cy="modal-add-priority-item"
               >
                 <div className="flex items-center">
                   <div
@@ -78,9 +76,7 @@ const Select = ({ label, value, onSelect = () => {} }) => {
                       backgroundColor: d.color,
                     }}
                   />
-                  <p className="text-[16px] text-[#111111] font-regular">
-                    {d.label}
-                  </p>
+                  <Label>{d.label}</Label>
                 </div>
 
                 {value === d.value ? (
