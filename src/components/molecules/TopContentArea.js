@@ -72,7 +72,7 @@ const TopContentArea = ({
               onBlur={onBlur}
             />
           ) : (
-            <Title dataCy={dataCyTitle}>{title}</Title>
+            <Title dataCy={dataCyTitle} onClick={onClickEditButton}>{title}</Title>
           )}
 
           {title && isShowEditButton ? (
@@ -80,7 +80,6 @@ const TopContentArea = ({
               data-cy={dataCyEditButton}
               className="ml-[30px]"
               onClick={() => {
-                console.log('inputRef.current', inputRef.current)
                 if (inputRef.current === null) {
                   onClickEditButton();
                 }

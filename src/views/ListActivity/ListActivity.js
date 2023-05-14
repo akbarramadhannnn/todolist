@@ -81,9 +81,11 @@ const ListItem = () => {
   }, []);
 
   const handleEditTitle = useCallback(() => {
-    ApiUpdateTitleActivityGroupById(params.id, title).then((response) => {
-      setTitle(response.title);
-    });
+    if (!isEdit) {
+      ApiUpdateTitleActivityGroupById(params.id, title).then((response) => {
+        setTitle(response.title);
+      });
+    }
     setIsEdit(!isEdit);
   }, [isEdit, params.id, title]);
 
