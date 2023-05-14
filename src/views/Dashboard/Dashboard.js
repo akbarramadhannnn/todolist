@@ -51,10 +51,11 @@ const Dashboard = () => {
 
   const handleAddActivity = useCallback(() => {
     ApiCreateActivityGroup().then((response) => {
-      setListActivity((oldState) => ({
-        ...oldState,
-        data: [...oldState.data, response],
-      }));
+      setIsLoading(true);
+      ApiGetActivityGroup().then((response) => {
+        setListActivity(response);
+        setIsLoading(false);
+      });
     });
   }, []);
 
@@ -113,7 +114,11 @@ const Dashboard = () => {
       {isLoading ? <LoadingSpinner /> : null}
 
       {!isLoading && !listActivity.data.length > 0 ? (
-        <EmptyState type={1} dataCy="activity-empty-state" />
+        <EmptyState
+          type={1}
+          dataCy="activity-empty-state"
+          onClick={handleAddActivity}
+        />
       ) : null}
 
       {!isLoading && listActivity.data.length > 0 ? (

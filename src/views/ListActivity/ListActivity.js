@@ -335,6 +335,10 @@ const ListItem = () => {
         onSubmitDelete={handleSubmitDeleteTodo}
         disabledButton={modalDialog.disabledButton}
       />
+
+      <div data-cy="modal-add"></div>
+      <div data-cy="modal-information"></div>
+      <div data-cy="modal-delete"></div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { memo, useMemo } from "react";
 import EmptyState1 from "assets/images/empty-state-1.png";
 import EmptyState2 from "assets/images/empty-state-2.png";
 
-const EmptyState = ({ type = 1, dataCy }) => {
+const EmptyState = ({ type = 1, dataCy, onClick }) => {
   const generateImage = useMemo(() => {
     let img;
     if (type === 1) {
@@ -18,6 +18,7 @@ const EmptyState = ({ type = 1, dataCy }) => {
     <div
       data-cy={dataCy}
       className="flex justify-center items-center h-[400px] lg:h-full md:mt-[200px]"
+      onClick={onClick}
     >
       <img
         className="lg:w-[767px] lg:h-[490px]"
