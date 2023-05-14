@@ -5,7 +5,6 @@ import {
   ModalForm,
   CardTodoList,
   ModalDialog,
-  ModalAlert,
 } from "components/molecules";
 import { EmptyState, LoadingSpinner } from "components/atoms";
 import {
@@ -50,10 +49,6 @@ const ListItem = () => {
     desc: "",
     disabledButton: false,
   });
-  const [modalAlert, setModalAlert] = useState({
-    isOpen: false,
-    desc: "",
-  });
   const [valueSort, setValueSort] = useState("latest");
 
   useEffect(() => {
@@ -86,11 +81,9 @@ const ListItem = () => {
   }, []);
 
   const handleEditTitle = useCallback(() => {
-    if (isEdit === false) {
-      ApiUpdateTitleActivityGroupById(params.id, title).then((response) => {
-        setTitle(response.title);
-      });
-    }
+    ApiUpdateTitleActivityGroupById(params.id, title).then((response) => {
+      setTitle(response.title);
+    });
     setIsEdit(!isEdit);
   }, [isEdit, params.id, title]);
 
@@ -115,14 +108,6 @@ const ListItem = () => {
     setIsModal(false);
     setTodosId("");
     setTodosActive("");
-  }, []);
-
-  const handleCloseModalAlert = useCallback(() => {
-    setModalAlert((oldState) => ({
-      ...oldState,
-      isOpen: false,
-      desc: "",
-    }));
   }, []);
 
   const handleChangeItemName = useCallback((e) => {
@@ -236,11 +221,6 @@ const ListItem = () => {
       state.splice(index, 1);
       setTodoItems(state);
       handleCloseModalDialog();
-      setModalAlert((oldState) => ({
-        ...oldState,
-        isOpen: true,
-        desc: "List item berhasil dihapus",
-      }));
     });
   }, [todosId, handleCloseModalDialog, todoItems]);
 
@@ -355,14 +335,6 @@ const ListItem = () => {
         onSubmitDelete={handleSubmitDeleteTodo}
         disabledButton={modalDialog.disabledButton}
       />
-
-      <ModalAlert
-        open={modalAlert.isOpen}
-        desc={modalAlert.desc}
-        onClose={handleCloseModalAlert}
-      />
-
-      <div data-cy="modal-information"></div>
     </div>
   );
 };
