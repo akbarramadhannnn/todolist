@@ -33,7 +33,7 @@ const TopContentArea = ({
   const onBlur = useCallback(() => {
     // onClickEditButton();
     inputRef.current.blur();
-  }, [onClickEditButton]);
+  }, []);
 
   return (
     <div

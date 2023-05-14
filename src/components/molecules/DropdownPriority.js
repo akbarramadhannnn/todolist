@@ -12,9 +12,8 @@ const Select = ({ label, value, onSelect = () => {} }) => {
   const handleSelectList = useCallback(
     (d) => {
       onSelect(d.value);
-      handleShowDropdown();
     },
-    [handleShowDropdown, onSelect]
+    [onSelect]
   );
 
   const values = useMemo(() => {
@@ -32,6 +31,11 @@ const Select = ({ label, value, onSelect = () => {} }) => {
             : "rounded-[6px] bg-[#fff]"
         }`}
         onClick={handleShowDropdown}
+        onBlur={() => {
+          setTimeout(() => {
+            handleShowDropdown();
+          }, 100);
+        }}
       >
         {values ? (
           <div className="flex items-center">

@@ -290,7 +290,11 @@ const ListItem = () => {
       ) : null}
 
       {!isLoading && !todoItems.length > 0 ? (
-        <EmptyState type={2} dataCy="todo-empty-state" />
+        <EmptyState
+          type={2}
+          dataCy="todo-empty-state"
+          onClick={handleAddTodoList}
+        />
       ) : null}
 
       {!isLoading && todoItems.length > 0 ? (

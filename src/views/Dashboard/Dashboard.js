@@ -84,13 +84,11 @@ const Dashboard = () => {
       disabledButton: true,
     }));
     ApiDeleteActivityGroupById(activityId).then((response) => {
-      const state = [...listActivity.data];
-      const index = state.map((d) => d.id).indexOf(activityId);
-      state.splice(index, 1);
-      setListActivity((oldSatte) => ({
-        ...oldSatte,
-        data: state,
-      }));
+      setIsLoading(true);
+      ApiGetActivityGroup().then((response) => {
+        setListActivity(response);
+        setIsLoading(false);
+      });
       handleCloseModalDialog();
       setModalAlert((oldState) => ({
         ...oldState,
@@ -98,7 +96,7 @@ const Dashboard = () => {
         desc: "Activity berhasil dihapus",
       }));
     });
-  }, [activityId, handleCloseModalDialog, listActivity]);
+  }, [activityId, handleCloseModalDialog]);
 
   return (
     <div className="pb-[60px]">
