@@ -37,7 +37,7 @@ const TopContentArea = ({
 
   return (
     <div
-      className={`mb-[37px] lg:mb-[55px]
+      className={`mb-[37px] md:mb-[200px] lg:mb-[55px]
     ${
       isShowEditButton
         ? "lg:flex lg:justify-between lg:items-center"

@@ -41,7 +41,7 @@ const ListItem = () => {
       value: "",
     },
     priority: {
-      value: "",
+      value: "very-high",
     },
   });
   const [modalDialog, setModalDialog] = useState({
