@@ -31,9 +31,11 @@ const TopContentArea = ({
   }, [disabledEdit]);
 
   const onBlur = useCallback(() => {
-    // onClickEditButton();
     inputRef.current.blur();
-  }, []);
+    setTimeout(() => {
+      onClickEditButton();
+    }, 100)
+  }, [onClickEditButton]);
 
   return (
     <div
@@ -77,7 +79,12 @@ const TopContentArea = ({
             <button
               data-cy={dataCyEditButton}
               className="ml-[30px]"
-              onClick={onClickEditButton}
+              onClick={() => {
+                console.log('inputRef.current', inputRef.current)
+                if (inputRef.current === null) {
+                  onClickEditButton();
+                }
+              }}
             >
               <Icon name="pencil-grey" />
             </button>
