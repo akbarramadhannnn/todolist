@@ -1,16 +1,20 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from "react";
 import Layout from "layout";
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "views/Dashboard";
-import ListActivity from "views/ListActivity";
+import { LoadingSpinner } from "components/atoms";
+
+const Dashboard = lazy(() => import("views/Dashboard"));
+const ListActivity = lazy(() => import("views/ListActivity"));
 
 function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/list-activity/:id" element={<ListActivity />} />
-      </Routes>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/list-activity/:id" element={<ListActivity />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }

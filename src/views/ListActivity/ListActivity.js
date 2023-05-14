@@ -23,6 +23,7 @@ import {
   sortByOldest,
   sortByLatest,
 } from "utils/sort";
+import DataPriority from "data/priority";
 
 const ListItem = () => {
   const navigate = useNavigate();
@@ -156,12 +157,7 @@ const ListItem = () => {
           };
           setTodoItems(state);
           handleCloseModal();
-          setModalAlert((oldState) => ({
-            ...oldState,
-            isOpen: true,
-            desc: "List item berhasil diedit",
-          }));
-          setValueSort("");
+          setValueSort("latest");
         }
       );
     } else {
@@ -170,12 +166,7 @@ const ListItem = () => {
           ApiGetActivityGroupById(params.id).then((response) => {
             setTodoItems(response.todo_items);
             handleCloseModal();
-            setModalAlert((oldState) => ({
-              ...oldState,
-              isOpen: true,
-              desc: "List item berhasil ditambahkan",
-            }));
-            setValueSort("");
+            setValueSort("latest");
           });
         }
       );
@@ -323,12 +314,26 @@ const ListItem = () => {
       ) : null}
 
       {!isLoading && todoItems.length > 0 ? (
-        <CardTodoList
-          data={listDataTodod}
-          onClickEdit={(data) => handleEditTodo(data)}
-          onClickDelete={(data) => handleDeleteTodo(data)}
-          onClickCheckList={(data) => handleCheklistTodo(data)}
-        />
+        <ul>
+          {todoItems.map((d, i) => {
+            const dataPriority = DataPriority.find(
+              (f) => f.value === d.priority
+            );
+            return (
+              <CardTodoList
+                key={i}
+                data={listDataTodod}
+                isActive={d.is_active}
+                title={d.title}
+                color={dataPriority.color}
+                lastIndex={todoItems.length - 1 === i}
+                onClickEdit={() => handleEditTodo(d)}
+                onClickDelete={() => handleDeleteTodo(d)}
+                onClickCheckList={() => handleCheklistTodo(d)}
+              />
+            );
+          })}
+        </ul>
       ) : null}
 
       <ModalForm

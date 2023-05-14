@@ -55,11 +55,6 @@ const Dashboard = () => {
         ...oldState,
         data: [...oldState.data, response],
       }));
-      setModalAlert((oldState) => ({
-        ...oldState,
-        isOpen: true,
-        desc: "Activity berhasil ditambahkan",
-      }));
     });
   }, []);
 
@@ -122,11 +117,19 @@ const Dashboard = () => {
       ) : null}
 
       {!isLoading && listActivity.data.length > 0 ? (
-        <CardActivity
-          data={listActivity.data}
-          onClickCard={(d) => handleDetailCard(d)}
-          onClickDelete={(d) => handleDeleteCard(d)}
-        />
+        <ul className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {listActivity.data.map((d, i) => {
+            return (
+              <CardActivity
+                key={i}
+                title={d.title}
+                createdAt={d.created_at}
+                onClickCard={() => handleDetailCard(d)}
+                onClickDelete={() => handleDeleteCard(d)}
+              />
+            );
+          })}
+        </ul>
       ) : null}
 
       <ModalDialog
